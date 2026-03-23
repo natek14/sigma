@@ -1,6 +1,7 @@
 #!/bin/bash
 timedatectl set-ntp true
 reflector --country Poland --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
+wipefs -a /dev/nvme0n1
 echo -e "g\nn\n1\n\n+512M\nt\n1\n1\nn\n2\n\n\nw" | fdisk /dev/nvme0n1
 mkfs.fat -F32 /dev/nvme0n1p1
 mkfs.ext4 /dev/nvme0n1p2
